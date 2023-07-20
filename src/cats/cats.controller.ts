@@ -18,8 +18,8 @@ export class CatsController {
 
   @Post()
   @HttpCode(204)
-  create(@Body() dto: CreateCatDto): string {
-    return 'This action adds a new cat ' + JSON.stringify(dto);
+  create(@Body() dto: CreateCatDto) {
+    this.catsService.create(dto);
   }
 
   @Get(':id')
@@ -39,7 +39,7 @@ export class CatsController {
 
   @Get()
   findAll() {
-    return 'This action returns all cats';
+    return this.catsService.findAll();
   }
 
   @Get('ab*cd')
