@@ -20,6 +20,10 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
     //   provide: APP_FILTER,
     //   useClass: HttpExceptionFilter,
     // },
+    // { // necessary for global pipes
+    //   provide: APP_PIPE,
+    //   useClass: ValidationPipe,
+    // },
   ],
 })
 export class AppModule implements NestModule {

@@ -7,10 +7,12 @@ import {
   Post,
   Query,
   Redirect,
-  UseFilters
+  UseFilters,
 } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { HttpExceptionFilter } from 'src/filters/http-exception.filter';
+import { ParseIntPipe } from 'src/pipes/parse-int.pipe';
+import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 
@@ -22,13 +24,21 @@ export class CatsController {
   @Post()
   @HttpCode(204)
   @UseFilters(HttpExceptionFilter) // method-scoped exception filter
-  create(@Body() dto: CreateCatDto) {
+  // @UsePipes(new JoiValidationPipe(createCatSchema))
+  create(@Body(new ValidationPipe()) dto: CreateCatDto) {
     // throw new ForbiddenException();
     this.catsService.create(dto);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): string {
+  findOne(
+    @Param(
+      'id',
+      new ParseIntPipe(),
+      // new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
+    )
+    id: number,
+  ): string {
     return `This action returns a #${id} cat`;
   }
 
