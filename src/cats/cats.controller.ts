@@ -7,18 +7,23 @@ import {
   Post,
   Query,
   Redirect,
+  UseFilters
 } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
+import { HttpExceptionFilter } from 'src/filters/http-exception.filter';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 
 @Controller('cats')
+// @UseFilters(HttpExceptionFilter) // controller-scoped exception filter
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
   @Post()
   @HttpCode(204)
+  @UseFilters(HttpExceptionFilter) // method-scoped exception filter
   create(@Body() dto: CreateCatDto) {
+    // throw new ForbiddenException();
     this.catsService.create(dto);
   }
 

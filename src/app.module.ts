@@ -14,7 +14,13 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
 @Module({
   imports: [CatsModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    // { // necessary for global filters
+    //   provide: APP_FILTER,
+    //   useClass: HttpExceptionFilter,
+    // },
+  ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
