@@ -8,9 +8,12 @@ import {
   Query,
   Redirect,
   UseFilters,
+  UseGuards,
 } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
+import { Roles } from 'src/decorators/roles.decorator';
 import { HttpExceptionFilter } from 'src/filters/http-exception.filter';
+import { RolesGuard } from 'src/guards/roles.guard';
 import { ParseIntPipe } from 'src/pipes/parse-int.pipe';
 import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { CatsService } from './cats.service';
@@ -21,10 +24,13 @@ import { CreateCatDto } from './dto/create-cat.dto';
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
+  // @UsePipes(new JoiValidationPipe(createCatSchema))
+  // @SetMetadata('roles', ['admin'])
   @Post()
   @HttpCode(204)
   @UseFilters(HttpExceptionFilter) // method-scoped exception filter
-  // @UsePipes(new JoiValidationPipe(createCatSchema))
+  @UseGuards(RolesGuard)
+  @Roles('admin')
   create(@Body(new ValidationPipe()) dto: CreateCatDto) {
     // throw new ForbiddenException();
     this.catsService.create(dto);

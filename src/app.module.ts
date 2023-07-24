@@ -24,6 +24,10 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
     //   provide: APP_PIPE,
     //   useClass: ValidationPipe,
     // },
+    // { // necessary for global pipes
+    //   provide: APP_GUARD,
+    //   useClass: RolesGuard,
+    // },
   ],
 })
 export class AppModule implements NestModule {
