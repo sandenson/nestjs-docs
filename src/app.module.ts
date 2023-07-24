@@ -24,9 +24,13 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
     //   provide: APP_PIPE,
     //   useClass: ValidationPipe,
     // },
-    // { // necessary for global pipes
+    // { // necessary for global guards
     //   provide: APP_GUARD,
     //   useClass: RolesGuard,
+    // },
+    // { // necessary for global interceptors
+    //   provide: APP_INTERCEPTOR,
+    //   useClass: LoggingInterceptor,
     // },
   ],
 })
