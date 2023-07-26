@@ -10,9 +10,11 @@ import { CatsController } from './cats/cats.controller';
 import { CatsModule } from './cats/cats.module';
 import { logger } from './middlewares/functional-logger.middleware';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
+import { ConfigModule } from './config/config.module';
+import { ConfigurableModule } from './configurable/configurable.module';
 
 @Module({
-  imports: [CatsModule],
+  imports: [CatsModule, ConfigModule, ConfigurableModule],
   controllers: [AppController],
   providers: [
     AppService,
