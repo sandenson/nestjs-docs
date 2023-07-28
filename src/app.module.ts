@@ -2,27 +2,27 @@ import {
   MiddlewareConsumer,
   Module,
   NestModule,
-  RequestMethod,
+  RequestMethod
 } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsController } from './cats/cats.controller';
 import { CatsModule } from './cats/cats.module';
+import { CommonModule } from './common/common.module';
 import { ConfigModule } from './config/config.module';
 import { logger } from './middlewares/functional-logger.middleware';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
-import { CommonService } from './common/common.service';
 
 @Module({
   imports: [
     CatsModule,
     ConfigModule,
+    CommonModule,
     // ConfigurableModule.jaime({ folder: './folder' }),
   ],
   controllers: [AppController],
   providers: [
     AppService,
-    CommonService,
     // { // necessary for global filters
     //   provide: APP_FILTER,
     //   useClass: HttpExceptionFilter,

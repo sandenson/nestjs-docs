@@ -1,5 +1,6 @@
-import { Inject, Injectable, Scope } from '@nestjs/common';
+import { Inject, Injectable, Scope, forwardRef } from '@nestjs/common';
 import { INQUIRER, REQUEST } from '@nestjs/core';
+import { CommonService } from 'src/common/common.service';
 import { Cat } from './interfaces/cat.interface';
 
 @Injectable({ scope: Scope.REQUEST, durable: true })
@@ -7,8 +8,10 @@ export class CatsService {
   private readonly cats: Cat[] = [];
 
   constructor(
-    @Inject(REQUEST) private request: { tenantId: string },
-    @Inject(INQUIRER) private parentClass: object,
+    @Inject(REQUEST) private readonly request: { tenantId: string },
+    @Inject(INQUIRER) private readonly parentClass: object,
+    @Inject(forwardRef(() => CommonService))
+    private readonly commonService: CommonService,
   ) {
     console.log('constructor', this.request.tenantId);
   }
