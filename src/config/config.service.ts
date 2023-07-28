@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 import { readFileSync } from 'fs';
 import path from 'path';
 
-@Injectable()
+@Injectable(/* { scope: Scope.REQUEST }*/)
 export class ConfigService {
   private readonly envConfig: Record<string, any>;
 

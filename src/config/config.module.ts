@@ -1,10 +1,7 @@
 import { DynamicModule, Module } from '@nestjs/common';
-import { ConfigurableModule } from 'src/configurable/configurable.module';
 import { ConfigService } from './config.service';
 
-@Module({
-  imports: [ConfigurableModule.roberto({ folder: './config' })],
-})
+@Module({})
 export class ConfigModule {
   static register(options: Record<string, any>): DynamicModule {
     return {

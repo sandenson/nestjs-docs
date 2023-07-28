@@ -22,7 +22,10 @@ import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 
-@Controller('cats')
+@Controller({
+  path: 'cats',
+  // scope: Scope.REQUEST,
+})
 @UseInterceptors(LoggingInterceptor, TransformInterceptor)
 // @UseFilters(HttpExceptionFilter) // controller-scoped exception filter
 export class CatsController {

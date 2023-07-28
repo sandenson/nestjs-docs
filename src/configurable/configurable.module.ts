@@ -19,11 +19,15 @@ export const {
   .build();
 
 @Module({
-  providers: [ConfigurableService],
+  providers: [
+    ConfigurableService,
+    { provide: MODULE_OPTIONS_TOKEN, useValue: { folder: 'a' } },
+  ],
   exports: [ConfigurableService],
 })
 export class ConfigurableModule extends ConfigurableModuleClass {
   static jaime(options: typeof OPTIONS_TYPE): DynamicModule {
+    console.log(MODULE_OPTIONS_TOKEN, OPTIONS_TYPE);
     return {
       // your custom logic here
       ...super.roberto(options),

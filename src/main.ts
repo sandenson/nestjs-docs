@@ -1,5 +1,6 @@
-import { NestFactory } from '@nestjs/core';
+import { ContextIdFactory, NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { AggregateByTenantContextIdStrategy } from './context-id.strategy';
 import { ExcludeNullInterceptor } from './interceptors/exclude-null.interceptor';
 
 async function bootstrap() {
@@ -8,6 +9,7 @@ async function bootstrap() {
   // app.useGlobalPipes(new ValidationPipe()); // global-scoped pipe
   // app.useGlobalGuards(new RolesGuard()); // In the case of hybrid apps the useGlobalGuards() method doesn't set up guards for gateways and micro services by default (see Hybrid application for information on how to change this behavior). For "standard" (non-hybrid) microservice apps, useGlobalGuards() does mount the guards globally.
   app.useGlobalInterceptors(new ExcludeNullInterceptor());
+  ContextIdFactory.apply(new AggregateByTenantContextIdStrategy());
   await app.listen(3000);
 }
 bootstrap();

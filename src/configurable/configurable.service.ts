@@ -3,8 +3,8 @@ import * as dotenv from 'dotenv';
 import { readFileSync } from 'fs';
 import path from 'path';
 import {
-    ConfigurableModuleOptions,
-    MODULE_OPTIONS_TOKEN,
+  ConfigurableModuleOptions,
+  MODULE_OPTIONS_TOKEN,
 } from './configurable.module';
 
 @Injectable()
