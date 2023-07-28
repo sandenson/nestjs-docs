@@ -2,7 +2,7 @@ import {
   MiddlewareConsumer,
   Module,
   NestModule,
-  RequestMethod
+  RequestMethod,
 } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -12,17 +12,21 @@ import { CommonModule } from './common/common.module';
 import { ConfigModule } from './config/config.module';
 import { logger } from './middlewares/functional-logger.middleware';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
+import { TestModule } from './test/test.module';
+import { TestService } from './test/test.service';
 
 @Module({
   imports: [
     CatsModule,
     ConfigModule,
     CommonModule,
+    TestModule,
     // ConfigurableModule.jaime({ folder: './folder' }),
   ],
   controllers: [AppController],
   providers: [
     AppService,
+    TestService,
     // { // necessary for global filters
     //   provide: APP_FILTER,
     //   useClass: HttpExceptionFilter,
