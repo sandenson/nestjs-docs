@@ -12,13 +12,13 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
-import { Roles } from 'src/decorators/roles.decorator';
-import { HttpExceptionFilter } from 'src/filters/http-exception.filter';
-import { RolesGuard } from 'src/guards/roles.guard';
-import { LoggingInterceptor } from 'src/interceptors/logging.interceptor';
-import { TransformInterceptor } from 'src/interceptors/transform.interceptor';
-import { ParseIntPipe } from 'src/pipes/parse-int.pipe';
-import { ValidationPipe } from 'src/pipes/validation.pipe';
+import { Roles } from '../decorators/roles.decorator';
+import { HttpExceptionFilter } from '../filters/http-exception.filter';
+import { RolesGuard } from '../guards/roles.guard';
+import { LoggingInterceptor } from '../interceptors/logging.interceptor';
+import { TransformInterceptor } from '../interceptors/transform.interceptor';
+import { ParseIntPipe } from '../pipes/parse-int.pipe';
+import { ValidationPipe } from '../pipes/validation.pipe';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 

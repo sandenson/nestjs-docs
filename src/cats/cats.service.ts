@@ -1,6 +1,6 @@
 import { Inject, Injectable, Scope, forwardRef } from '@nestjs/common';
 import { INQUIRER, ModuleRef, REQUEST } from '@nestjs/core';
-import { CommonService } from 'src/common/common.service';
+import { CommonService } from '../common/common.service';
 import { Cat } from './interfaces/cat.interface';
 
 @Injectable({ scope: Scope.REQUEST, durable: true })

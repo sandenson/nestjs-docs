@@ -1,7 +1,7 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { ContextIdFactory, ModuleRef } from '@nestjs/core';
-import { AppService } from 'src/app.service';
-import { CatsService } from 'src/cats/cats.service';
+import { AppService } from '../app.service';
+import { CatsService } from '../cats/cats.service';
 
 @Injectable()
 export class TestService implements OnModuleInit {

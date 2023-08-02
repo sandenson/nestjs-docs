@@ -42,11 +42,12 @@ import { TestService } from './test/test.service';
     //   scope: Scope.REQUEST,
     //   durable: true,
     // },
-    // { // necessary for global interceptors
+    // { // necessary for global interceptors to be able to be overridden in tests
     //   provide: APP_INTERCEPTOR,
-    //   useClass: LoggingInterceptor,
+    //   useExisting: LoggingInterceptor,
     //   scope: Scope.TRANSIENT,
     // },
+    // LoggingInterceptor
   ],
 })
 export class AppModule implements NestModule {
