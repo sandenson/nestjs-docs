@@ -10,6 +10,7 @@ import { CatsController } from './cats/cats.controller';
 import { CatsModule } from './cats/cats.module';
 import { CommonModule } from './common/common.module';
 import { ConfigModule } from './config/config.module';
+import { HeroesGameModule } from './heroes-game/heroes-game.module';
 import { logger } from './middlewares/functional-logger.middleware';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { TestModule } from './test/test.module';
@@ -21,6 +22,7 @@ import { TestService } from './test/test.service';
     ConfigModule,
     CommonModule,
     TestModule,
+    HeroesGameModule,
     // ConfigurableModule.jaime({ folder: './folder' }),
   ],
   controllers: [AppController],
